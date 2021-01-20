@@ -14,12 +14,13 @@ class RecordsController extends Controller
      */
     public function index()
     {
-        dd(Record::all());
+        //dd(Record::all());
         $data = [
             'records'=>Record::all()
         ];
 
         return view('records.index', $data);
+        //return 'ciao a tutti';
     }
 
     /**
@@ -51,7 +52,11 @@ class RecordsController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = [
+            'record'=>Record::find($id)
+        ];
+
+        return view('records.show', $data);
     }
 
     /**

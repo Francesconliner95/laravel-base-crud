@@ -1,10 +1,10 @@
 <header>
     <ul>
         <li>
-            <a href="#">Home</a>
+            <a href="{{ route('home')}}">Home</a>
         </li>
         <li>
-            <a href="#">Records</a>
+            <a href="{{ route('records.index')}}">Records</a>
         </li>
     </ul>
 </header>
