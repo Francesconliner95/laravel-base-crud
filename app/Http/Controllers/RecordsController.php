@@ -30,7 +30,7 @@ class RecordsController extends Controller
      */
     public function create()
     {
-        //
+        return view('records.create');
     }
 
     /**
@@ -41,7 +41,13 @@ class RecordsController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request->all();
+        $new_record = new Record();
         //
+        $new_record->fill($data);
+        $new_record->save();
+
+        return redirect()->route('records.index');
     }
 
     /**

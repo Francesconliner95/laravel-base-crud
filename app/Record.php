@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Record extends Model
 {
-    protected $table = 'records';
+    //protected $table = 'records';
+    protected $fillable = ['titolo', 'artista', 'genere', 'anno'];
 }
