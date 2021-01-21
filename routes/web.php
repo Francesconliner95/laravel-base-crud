@@ -13,12 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//METODO STANDAR per definire una rotta
 // Route::get('/', function () {
 //     return view('home');
 // });
 
+//METODO con utilizzo del controller
+//php artisan make:controller MovieController
 Route::get('/', 'HomeController@index')->name('home');
 
-//Route::resource('/home', 'HomeController@index');
-
+//php artisan make:controller MovieController --resource
 Route::resource('/records', 'RecordsController');

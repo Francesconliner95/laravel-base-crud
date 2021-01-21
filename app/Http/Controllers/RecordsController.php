@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Record;//Mi collego a Model Record (Database)
 
+//Controller con  --resource  per gestire la rotta Records, la utilizziamo in quanto i nostri records saranno gestiti attraveso più funzioni diverse tra loro:
+//index  la funzione che ci collegherà alla pagina principare (record.index.blade.php) che mostra la lista dei Records
+//show la funzione che ci collegherà alla pagina (record.show.blade.php) che ci mostrerà ogni singolo Record
+//create la funzione che ci collegherà alla pagina (record.create.blade.php) che ci permetterà di aggiungere un nuovo Records
+//store la funzione che ci permetterà di memorizzare il nuovo Records nel database
+
 class RecordsController extends Controller
 {
     /**
@@ -14,13 +20,13 @@ class RecordsController extends Controller
      */
     public function index()
     {
-        //dd(Record::all());
+        //prende tutti(all) i dati all'interno del database, grazie al Model Record collegato e li memorizza nella variabile records, ci apre la pagina records.index
         $data = [
             'records'=>Record::all()
         ];
 
         return view('records.index', $data);
-        //return 'ciao a tutti';
+
     }
 
     /**
@@ -74,6 +80,7 @@ class RecordsController extends Controller
      */
     public function show($id)
     {
+        //cerco(find) nel database la riga con l'id che mi sono passato e memorizzo tutti i valori nella variabile record.
         $data = [
             'record'=>Record::find($id)
         ];
