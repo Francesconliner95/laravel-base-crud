@@ -25,7 +25,22 @@
     </div>
     <div>
         <label>Genere</label>
-        <input type="text" name="genere" value="{{$record->genere}}">
+        <select name="genere">
+            <option value="">--seleziona--</option>
+            <option value="rock"
+            {{ $record->genere=='rock' ? 'selected=selected' : ''}}>Rock</option>
+            <option value="metal"
+            {{ $record->genere=='metal' ? 'selected=selected' : ''}}>Metal</option>
+            <option value="pop"
+            {{ $record->genere=='pop' ? 'selected=selected' : ''}}>Pop</option>
+            <option value="jazz"
+            {{ $record->genere=='jazz' ? 'selected=selected' : ''}}>Jazz</option>
+            <option value="punk"
+            {{ $record->genere=='punk' ? 'selected=selected' : ''}}>Punk</option>
+            <option value="classic"
+            {{ $record->genere=='classic' ? 'selected=selected' : ''}}>Classic</option>
+        </select>
+        {{-- <input type="text" name="genere" value="{{$record->genere}}"> --}}
     </div>
     <div>
         {{-- cambiato da type="button" a type="submit" --}}

@@ -23,7 +23,16 @@
     </div>
     <div>
         <label>Genere</label>
-        <input type="text" name="genere">
+        <select name="genere">
+            <option value="">--seleziona--</option>
+            <option value="rock">Rock</option>
+            <option value="metal">Metal</option>
+            <option value="pop">Pop</option>
+            <option value="jazz">Jazz</option>
+            <option value="punk">Punk</option>
+            <option value="classic">Classic</option>
+        </select>
+        {{-- <input type="text" name="genere"> --}}
     </div>
     <div>
         {{-- cambiato da type="button" a type="submit" --}}
