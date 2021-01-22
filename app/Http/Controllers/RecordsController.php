@@ -94,9 +94,14 @@ class RecordsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    //essendomi passato come parametro l'id quando vado a scrivere la classe Record in automatico viene associato l'id alla riga corrispondente del database e ne vado a memorizzare tutti i dati nella variabile $record, cosi facendo evito di utilizzare Record::find($id) (vedi sopra public function show)
+    public function edit(Record $record)
     {
-        //
+        $data=[
+            'record' => $record
+        ];
+
+        return view('records.edit', $data);
     }
 
     /**
@@ -106,9 +111,16 @@ class RecordsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Record $record)
     {
-        //
+        //la funzione update si passa di default il parametro $request che conterrà i dati da noi inseriti nel form grazie al fatto che abbiamo specificato il @method('POST'), $request->all() con questo comando andiamo a memorizzare tutti i dati inseriti all'interno della variabile $data
+        $data=$request->all();
+
+        //dopo di che attraverso il comando update andiamo a dire di sostituire e salvare direttamente i nuovi dati ($data) all'interno della riga selezionata $record (ovvero la classe Record corrente)
+        $record->update($data);
+
+        //successivamente reindirizzo la pagina nella sezione show del record modificato ['record' => $record->id], in modo da poterne visualizzare le modifiche salvate
+        return redirect()->route('records.show', ['record' => $record->id]);
     }
 
     /**
