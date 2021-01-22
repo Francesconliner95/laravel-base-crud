@@ -129,8 +129,13 @@ class RecordsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    //essendomi passato come parametro l'id quando vado a scrivere la classe Record in automatico viene associato l'id alla riga corrispondente del database
+    public function destroy(Record $record)
     {
-        //
+        //attraverso la funzione delete mi va ad eliminare direttamente la riga nel database
+        $record->delete();
+
+        //successivamente reindirizzo la pagina nella sezione index, in modo da poter visualizzare le lista dei record aggiornata, ovvero senza la riga corrente
+        return redirect()->route('records.index');
     }
 }
